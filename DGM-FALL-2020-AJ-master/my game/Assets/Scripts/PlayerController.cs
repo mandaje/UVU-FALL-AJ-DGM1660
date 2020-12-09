@@ -11,16 +11,26 @@ public class PlayerController : MonoBehaviour
     private float hInput;
     private float fInput;
     public GameObject projectile;
+    public GameManager gameManager;
 
     public bool gameOver = false;
     public bool hasPrize = false;
+    public bool youWin = false;
     
     public GameObject enemy;
     private Rigidbody playerRb;
+
+    public AudioSource playerAudio;
+    public AudioClip prizeSound;
+    public AudioSource prizeAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        playerAudio  = GetComponent<AudioSource>();
+        prizeAudio  = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -42,17 +52,21 @@ public class PlayerController : MonoBehaviour
         hasPrize = true;
         Debug.Log("Prize = " + hasPrize);
         Destroy(collider.gameObject);
+        prizeAudio.PlayOneShot(prizeSound, 1.0f);
       }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-      if(collision.gameObject.CompareTag("Enemy"))
+       if(collider.gameObject.CompareTag("Enemy"))
       {
-        Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+        Collider enemyCollider = collider.gameObject.GetComponent<Collider>();
         gameOver = true;
-        Debug.Log(gameOver);
-        Destroy(collider.gameObject);
+        Debug.Log("GAME OVER");
+        gameManager.GameOver();
+      }
+
+      if(collider.gameObject.CompareTag("EndGame"))
+      {
+          Collider endGameCollider = collider.gameObject.GetComponent<Collider>();
+          youWin=true;
+          Debug.Log("YouWin!");
       }
     }
 }
