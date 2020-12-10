@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public bool isGameActive;
     public TextMeshProUGUI gameOverTxt;
-    public TextMeshProUGUI titleTxt;
+    public TextMeshProUGUI endGameTxt;
+
 
     public Button restartButton;
     public Button startButton;
+    public GameObject titleScreen;
+
      public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
@@ -25,24 +28,17 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
     public void StartGame()
    {
        isGameActive = true;
+       titleScreen.gameObject.SetActive(false);
         gameOverTxt.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
-        titleTxt.gameObject.SetActive(true);
-        startButton.gameObject.SetActive(true);
-        Debug.Log(startButton.gameObject.name + "was clicked");
+
         
    }
-   public void OnMouseDown()
-   {
-        if(gameManager.isGameActive)
-       {
-           titleTxt.gameObject.SetActive(false);
-            startButton.gameObject.SetActive(false);
-       }
-   }
+
 
      public void GameOver()
     {
@@ -55,5 +51,10 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void EndGame()
+    {
+        endGameTxt.gameObject.SetActive(true);
     }
 }

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     private Rigidbody enemyRb;
 
-    private GameObject player;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -28,9 +28,6 @@ public class Enemy : MonoBehaviour
       {
         Collider playerCollider = collider.gameObject.GetComponent<Collider>();
         enemyAudio.PlayOneShot(enemySound, 1.0f);
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized; 
-        enemyRb.AddForce(lookDirection * speed);
-        player = GameObject.Find("Player");
       }
     }
    

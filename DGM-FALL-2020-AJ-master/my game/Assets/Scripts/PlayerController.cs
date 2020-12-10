@@ -21,15 +21,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
 
     public AudioSource playerAudio;
-    public AudioClip prizeSound;
-    public AudioSource prizeAudio;
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         playerAudio  = GetComponent<AudioSource>();
-        prizeAudio  = GetComponent<AudioSource>();
+
 
     }
 
@@ -52,7 +51,6 @@ public class PlayerController : MonoBehaviour
         hasPrize = true;
         Debug.Log("Prize = " + hasPrize);
         Destroy(collider.gameObject);
-        prizeAudio.PlayOneShot(prizeSound, 1.0f);
       }
        if(collider.gameObject.CompareTag("Enemy"))
       {
@@ -67,6 +65,7 @@ public class PlayerController : MonoBehaviour
           Collider endGameCollider = collider.gameObject.GetComponent<Collider>();
           youWin=true;
           Debug.Log("YouWin!");
+          gameManager.EndGame();
       }
     }
 }

@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
     private float minSpeed = 12, maxSpeed = 16, maxTorque = 10, xRange = 4, ySpawnPos = -6;
-    public GameManager gameManager;
+    public GameManager gameManager = null;
 
     public int pointValue;
     public ParticleSystem explosionParticle;
@@ -46,7 +46,7 @@ public class Target : MonoBehaviour
            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
            gameManager.UpdateScore(pointValue);
        }
-       
+
    }
 
     private void OnTriggerEnter(Collider other)
