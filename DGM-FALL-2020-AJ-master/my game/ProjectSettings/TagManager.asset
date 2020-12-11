@@ -6,8 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Prize
-  - player
-  - EndGame
   layers:
   - Default
   - TransparentFX
@@ -17,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
@@ -44,7 +42,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Physics
-    uniqueID: 814776197
     locked: 0

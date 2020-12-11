@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private float hInput;
     private float fInput;
-    public GameObject projectile;
+    private GameObject projectile;
     public GameManager gameManager;
 
     public bool gameOver = false;
