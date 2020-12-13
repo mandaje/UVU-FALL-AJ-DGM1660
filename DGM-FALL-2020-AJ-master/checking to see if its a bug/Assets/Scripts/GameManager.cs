@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public TextMeshProUGUI gameOverTxt;
     public TextMeshProUGUI endGameTxt;
+    public TextMeshProUGUI prizeTxt;
 
 
     public Button restartButton;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
        titleScreen.gameObject.SetActive(false);
         gameOverTxt.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
-
+        prizeTxt.gameObject.SetActive(false);
         
    }
 
@@ -56,5 +57,10 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         endGameTxt.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true); 
+    }
+     public void HasPrize()
+    {
+        prizeTxt.gameObject.SetActive(true);
     }
 }

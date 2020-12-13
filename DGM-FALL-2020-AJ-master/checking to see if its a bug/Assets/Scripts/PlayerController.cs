@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
         hasPrize = true;
         Debug.Log("Prize = " + hasPrize);
         Destroy(collider.gameObject);
+        gameManager.HasPrize();
       }
+
        if(collider.gameObject.CompareTag("Enemy"))
       {
         Collider enemyCollider = collider.gameObject.GetComponent<Collider>();
